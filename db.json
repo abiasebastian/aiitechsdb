@@ -1,0 +1,171 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "user": [
+    {
+      "id": "abiaseb",
+      "name": "Abi A Sebastian",
+      "password": "qwer",
+      "email": "abi@mail.co",
+      "gender": "male",
+      "role": "Unassigned",
+      "status": true
+    },
+    {
+      "name": "dfghjkl",
+      "sex": "Female",
+      "address": "m,. m,.",
+      "email": "rew@hj.fd",
+      "mobile": "345678",
+      "course": "FSD",
+      "fee": "dfghjkl;",
+      "schedule": "Morning",
+      "id": "qhMfTNu"
+    },
+    {
+      "name": "rtyuiop",
+      "sex": "Female",
+      "address": "qwertyuklkjhgfd",
+      "email": "rtyu@rfd.fd",
+      "mobile": "trdsa",
+      "course": "1",
+      "fee": "hgfds",
+      "schedule": "2",
+      "username": "abiabi",
+      "password": "abiabi",
+      "id": "EixuVFe"
+    },
+    {
+      "name": "qwerghj",
+      "sex": "Female",
+      "address": "wertyuio",
+      "email": "sdf@rty.uyt",
+      "mobile": "23456yui",
+      "course": "FSD",
+      "fee": "ytre",
+      "schedule": "Morning",
+      "username": "abiabia",
+      "password": "wertyu",
+      "id": "f7MxT68"
+    },
+    {
+      "name": "rewqtr",
+      "sex": "Female",
+      "address": "rewsa",
+      "email": "ewq@fd.fd",
+      "mobile": "87654",
+      "course": "1",
+      "fee": "werty",
+      "schedule": "Morning",
+      "username": "abiabi",
+      "password": "567890",
+      "id": "xG0pPhh"
+    },
+    {
+      "name": "qwertyuio",
+      "sex": "1",
+      "address": "wertyuio",
+      "email": "wert@uio.fg",
+      "mobile": "34567890",
+      "course": "1",
+      "fee": "hgfds",
+      "schedule": "",
+      "username": "abiabi",
+      "password": "wertyui",
+      "id": "Dt03sk_"
+    },
+    {
+      "name": "dfghjkl",
+      "sex": "Female",
+      "address": "ertyui",
+      "email": "23hjk4@sdf.ghj",
+      "mobile": "34567",
+      "course": "1",
+      "fee": "ghjkl",
+      "schedule": "Morning",
+      "username": "abiabi",
+      "password": "wertyu",
+      "id": "bHmA9kN"
+    },
+    {
+      "name": "trewa",
+      "sex": "Female",
+      "address": "frdsa",
+      "email": "fdsa@kl.cv",
+      "mobile": "432",
+      "course": "FSD",
+      "fee": "6543",
+      "schedule": "Morning",
+      "username": "abiabi",
+      "password": "5432",
+      "id": "V9xEnbM"
+    },
+    {
+      "name": "ytrewq",
+      "sex": "Female",
+      "address": "ytreds",
+      "email": "gfds@hgf",
+      "mobile": "trew",
+      "course": "FSD",
+      "fee": "hgfds",
+      "schedule": "Morning",
+      "username": "abiabi",
+      "password": "trewq",
+      "id": "bfPomBy"
+    },
+    {
+      "name": "",
+      "sex": "",
+      "address": "",
+      "email": "",
+      "mobile": "",
+      "course": "",
+      "fee": "",
+      "schedule": "",
+      "username": "abiabi",
+      "password": "",
+      "id": "mrAHbMw"
+    },
+    {
+      "name": "",
+      "sex": "",
+      "address": "",
+      "email": "",
+      "mobile": "",
+      "course": "",
+      "fee": "",
+      "schedule": "",
+      "username": "abiabi",
+      "password": "",
+      "id": "TAQZmw4"
+    },
+    {
+      "name": "",
+      "sex": "",
+      "address": "",
+      "email": "",
+      "mobile": "",
+      "course": "",
+      "fee": "",
+      "schedule": "",
+      "username": "abiabi",
+      "password": "",
+      "id": "F6xLJOx"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

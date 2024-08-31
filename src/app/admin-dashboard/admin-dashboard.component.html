@@ -1,0 +1,133 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-lg-5 m-3"> 
+            <h3>STUDENTS</h3>
+            <button (click)="navToReg()">Add Student</button>
+            <button (click)="ascSort()">NameAsc</button>
+
+            <input type="checkbox" [(ngModel)]="filter.AI" (ngModelChange)="filterChange()" /> AI
+            <input type="checkbox" [(ngModel)]="filter.DM" (ngModelChange)="filterChange()" /> DM
+            <input type="checkbox" [(ngModel)]="filter.FSD" (ngModelChange)="filterChange()" /> FSD
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let student of filteredStudents">
+
+                        <th scope="row">{{filteredStudents.indexOf(student) + 1}}</th>
+                        <td style='cursor: pointer;' (click)="navigateToProfile(student._id)">{{student.name}}</td>
+                        <td></td>
+                        <td><img src='http://127.0.0.1:3000/files/students/photos/{{student._id}}.jpg' height="30 vw" width="30vw"></td>
+                        <td style="cursor: pointer" (click)="navigateToEditStudent(student)"> Edit</td>
+                        <button (click)="deleteUser(student._id,'student')">Delete</button>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-md-12 col-lg-5 m-3">
+            <h3>TRAINERS</h3>
+            <button (click)="navigateToAddTrainer()">Add Trainer</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let user of trainerArray">
+
+                        <th scope="row">{{trainerArray.indexOf(user) + 1}}</th>
+                        <td>{{user.name}}</td>
+                        <td>{{user.course}}</td>
+                        <td><img src='http://localhost:3000/files/trainers/photo/{{user._id}}.jpg' height="30 vw" width="30vw"></td>
+                        <td style="cursor: pointer" (click)="navigateToEditStudent(user)"> Edit</td>
+                        <button (click)="deleteUser(user._id,'trainer')">Delete</button>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+       
+    
+          <!-- Add Course Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form (ngSubmit)="submit()" [formGroup]="addCourseForm">
+                  <label for="course">
+                    Course Name
+                    <input  formControlName="course" name="course">
+                  </label><br>
+                  <label for="fee">
+                    Fee
+                    <input type="number" formControlName="fee" name="fee">
+                  </label><br>
+                  <label for="duration">
+                    Duration in hours
+                    <input type="number" formControlName="duration" name="duration">
+                  </label><br>
+                  <label for="syllabus">
+                    Syllabus
+                    <button type="button" (click)="addNewUnit()"class="btn btn-sm btn-warning mt-2">Add Unit</button>
+                    <input formControlName="syllabus" name="syllabus">
+                  </label><br>
+                  <label for="trainers">
+                    Trainers
+                    <select  formControlName="trainers" name="trainers">
+                        <option *ngFor="let trainer of trainerArray" [value]="trainer._id">{{trainer.name}}</option>
+                    </select>
+                  </label><br>
+                  <button type="submit">Submit</button>
+                </form>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-md-12 col-lg-5 m-3">
+            <h3>COURSES</h3>
+            <button data-bs-target="#exampleModal" data-bs-toggle="modal">Add Course</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Course</th>
+                        <th scope="col">Bureau</th>
+                        <th scope="col">Fee</th>
+                    </tr>
+                </thead>
+                <tbody>
+                      
+                    <tr *ngFor="let course of courseArray">
+
+                        <th scope="row">{{courseArray.indexOf(course) + 1}}</th>
+                        <td>{{course.course}}</td>
+                        <td>{{course.bureau}}</td>
+                        <td>{{course.fee}}</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+input,select {
+    display: inline;
+    width: 75vw;
+    margin: 1vw;
+}
+label{
+    size: 10vw;
+}
+#username.ng-dirty.ng-valid{
+    border-width: 0.5vw;
+    border-color: green;
+}
+
+#username.ng-dirty.ng-pending{
+    border-width: 0.5vw;
+    border-color: orange;
+}
+
+#username.ng-dirty.ng-invalid{
+    border-width: 0.5vw;
+    border-color: red;
+}

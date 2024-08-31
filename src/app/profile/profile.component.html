@@ -1,0 +1,165 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 col-lg-3 bg-info p-3 fw-bold text-white">
+      <div class="text-center ">
+        <img height="100" width="100" src="http://localhost:3000/files/students/photos/{{userData._id}}.jpg"
+          class="rounded-circle border border-danger">
+      </div>
+      <br>
+      <table>
+        <tr>
+          <td>Name</td>
+          <td>:</td>
+          <td>{{userData.name}}</td>
+        </tr>
+        <tr>
+          <td>DOB</td>
+          <td>:</td>
+          <td>{{userData.dob}}</td>
+        </tr>
+        <tr>
+          <td>ADDRESS</td>
+          <td>:</td>
+          <td>{{userData.address}}</td>
+        </tr>
+        <tr>
+          <td>MOBILE</td>
+          <td>:</td>
+          <td>{{userData.mobile}}</td>
+        </tr>
+        <tr>
+          <td>COURSE</td>
+          <td>:</td>
+          <td>{{course.course}}</td>
+        </tr>
+        <tr>
+          <td>SARF</td>
+          <td>:</td>
+          <td>{{userData.sarf}}</td>
+        </tr>
+        <tr>
+          <td>SCHEDULE</td>
+          <td>:</td>
+          <td>{{userData.schedule}}</td>
+        </tr>
+      </table>
+      <br>
+      
+
+    </div>
+    <div class="col-md-12 col-lg-9 bg-info-subtle p-3 min-vh-100">
+      <div class="row">
+        <div class="card bg-primary-subtle col-md-12 col-lg-4 m-2" style="width: 18rem;">
+          <div class="card-body">
+            <h2 class="card-title">FEE</h2>
+            <!-- Button trigger modal -->
+            <button type="button" *ngIf="parsedSessionStorage.role==='admin'" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Add Fee Payment
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form (ngSubmit)="feeSubmit()" [formGroup]="feeEditForm">
+                    <label for="date">
+                      Date
+                      <input type="datetime-local" formControlName="date" name="date">
+                    </label><br>
+                    <label for="amount">
+                      Amount
+                      <input type="number" formControlName="amount" name="amount">
+                    </label><br>
+                    <label for="recieptNo">
+                      Reciept No.
+                      <input type="number" formControlName="recieptNo" name="recieptNo">
+                    </label><br>
+                    <button type="submit">Submit</button>
+                  </form>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h6>FEE PAID:₹{{sumOfFee}}/₹{{userData.fee}}</h6>
+            <div class="progress" role="progressbar" aria-label="Basic example">
+              <div class="progress-bar" [ngStyle]="{ 'width': feeProgressBarWidth }"></div>
+            </div>
+            <h2 class="card-title">PAYMENT HISTORY</h2>
+            <div class="card-body" *ngFor="let payment of userData.feeObject">
+              <div class="m-3">
+                DATE:{{payment.date}}<br>
+                RECIEPT NO:{{payment.recieptNo}}<br>
+                AMOUNT:{{payment.amount}}
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-lg-2 card bg-primary-subtle m-2" style="width: 18rem;">
+          <div class="card-body">
+            <h2 class="card-title">ATTENDANCE</h2>
+            <!-- Button trigger modal -->
+            <button type="button" *ngIf="parsedSessionStorage.role==='admin'" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#attModal">
+              Add Attendance
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="attModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form (ngSubmit)="attSubmit()" [formGroup]="addAttForm">
+                    <label for="date">
+                      Date
+                      <input type="datetime-local" formControlName="date" name="date">
+                    </label><br>
+                    <label for="amount">
+                      Hours
+                      <input type="number" formControlName="hours" name="hours">
+                    </label><br>
+
+                    <button type="submit">Submit</button>
+                  </form>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div>
+              <h6>ATTENDANCE:{{sumOfAttendance}} Hours/{{userData.attendance}} Hours</h6>
+              <div class="progress" role="progressbar" aria-label="Basic example">
+                <div class="progress-bar" [ngStyle]="{ 'width': attendanceProgressBarWidth }"></div>
+              </div>
+              <div class="card-body" *ngFor="let attendance of userData.attendanceObject">
+                <div class="m-3">
+                  DATE:{{attendance.date}}<br>
+                  HOURS:{{attendance.hours}}<br>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12 col-lg-2 card bg-primary-subtle m-2" style="width: 18rem;">
+          <div class="card-body">
+            <h2 class="card-title">SYLLABUS</h2>
+            <div class="card-body">
+              <div class="m-3" *ngFor="let unit of course.syllabus">
+                <h4> UNIT {{course.syllabus.indexOf(unit)+1}}:{{unit.unit}}</h4><br>
+                <h5 *ngFor="let lesson of unit.lesson"></h5>
+                <h5 *ngFor="let lesson of unit.lesson">{{unit.lesson.indexOf(lesson)+1}}. {{lesson}}</h5><br>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

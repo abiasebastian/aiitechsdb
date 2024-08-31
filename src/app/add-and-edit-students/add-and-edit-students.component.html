@@ -1,0 +1,98 @@
+<h3 *ngIf="edituser">EDIT STUDENT DETAILS</h3>
+<h3 *ngIf="edituser===false">STUDENT REGISTRATION</h3>
+<div class="p-5">
+    <form [formGroup]="registerform" (ngSubmit)="startRegister()" method="post" enctype="multipart/form-data">
+
+        <div>
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="name" />
+        </div>
+
+
+        <div>
+            <label class="form-label" for="sex">Sex</label>
+            <select class="form-select" id="sex" formControlName="sex">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label class="form-label" for="address">Address</label>
+            <input type="text" id="address" class="form-control" formControlName="address" />
+        </div>
+        <div>
+            <label class="form-label" for="DOB">DOB</label>
+            <input type="date" id="DOB" class="form-control" formControlName="DOB" />
+        </div>
+        <div>
+            <label class="form-label" for="SARF">SARF</label>
+            <input type="text" id="SARF" class="form-control" formControlName="SARF" />
+        </div>
+        <div>
+            <label class="form-label" for="email">Email</label>
+            <input type="text" id="email" class="form-control" formControlName="email" />
+        </div>
+        <div>
+            <label class="form-label" for="mobile">Mobile</label>
+            <input type="text" id="mobile" class="form-control" formControlName="mobile" />
+        </div>
+        <div>
+            <label class="form-label" for="username">Username</label>
+            <input type="text" id="username" class="form-control" formControlName="username" name="username" />
+        </div>
+        <div>
+            <label class="form-label" for="password">Password</label>
+            <input type="password" id="password" class="form-control form-control-lg" formControlName="password" />
+        </div>
+        <div>
+            <label for="photo">Photo</label>
+            <input type="file" accept=".jpeg,.jpg" id="photo" name="photo" (input)="onPhotoSelected($event)">
+        </div>
+        <div>
+            <label for="aadhaar-front">Aadhaar Front</label>
+            <input type="file" accept=".jpeg,.jpg" id="aadhaarFront" name="aadhaarFront"
+                (input)="onAadhaarFrontSelected($event)">
+        </div>
+        <div>
+            <label for="aadhaar-back">Aadhaar Back</label>
+            <input type="file" accept=".jpeg,.jpg" id="aadhaarBack" name="aadhaarBack"
+                (input)="onAadhaarBackSelected($event)">
+        </div>
+
+        <div>
+            <label class="form-label" for="course">Course</label>
+            <select class="form-select" aria-label="Default select example" formControlName="course" id="course">
+                <option *ngFor="let course of courseArray" [value]="course._id">{{course.course}}</option>
+            </select>
+        </div>
+        <div>
+            <label class="form-label" for="course">Trainer</label>
+            <select class="form-select" aria-label="Default select example" formControlName="trainer" id="trainer">
+                <option *ngFor="let trainer of trainerArray" [value]="trainer._id">{{trainer.name}}</option>
+            </select>
+        </div>
+        <div>
+            <label class="form-label" for="fee">Fee</label>
+            <input type="number" id="fee" class="form-control form-control-lg" formControlName="fee" />
+        </div>
+        <div>
+            <label class="form-label" for="schedule">Schedule</label>
+            <select class="form-select" aria-label="Default select example " formControlName="schedule" id="schedule">
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+            </select>
+        </div>
+
+        <input name="role" value="student" formControlName="role" style="display: none;">
+
+        <div>
+            <button *ngIf="edituser==false" type="submit" class="btn btn-primary btn-lg"
+                data-mdb-ripple-color="dark">Register</button>
+            <button *ngIf="edituser" (click)="update()" type="button" class="btn btn-primary btn-lg"
+                data-mdb-ripple-color="dark">Update</button>
+        </div>
+        <button (click)="check()">CHECK</button>
+
+    </form>
+</div>
